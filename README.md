@@ -12,7 +12,7 @@
 </p>
 
 <p align="center">
-  <a href="#中文">中文</a> · <a href="#english">English</a>
+  <a href="#中文">中文</a> · <a href="#english">English</a> · <a href="docs/LAUNCH-KIT.md">Launch Kit</a>
 </p>
 
 ---
