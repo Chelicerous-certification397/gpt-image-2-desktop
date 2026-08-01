@@ -1,0 +1,238 @@
+/* Window shell: vibrancy + paper grain + ruled guides. */
+html,
+body,
+#root {
+  margin: 0;
+  height: 100%;
+  background: transparent;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--body-size);
+  color: var(--text-1);
+  -webkit-font-smoothing: antialiased;
+  user-select: none;
+  letter-spacing: 0.005em;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Drag strip for hiddenInset — keep transparent to let vibrancy show */
+.drag-strip {
+  height: 36px;
+  -webkit-app-region: drag;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px 0 84px;        /* leave space for traffic lights */
+  flex: 0 0 auto;
+  position: relative;
+}
+.drag-strip .brand {
+  -webkit-app-region: drag;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  color: var(--text-2);
+  font-size: 11px;
+  letter-spacing: var(--track-loose);
+  text-transform: uppercase;
+  font-weight: 500;
+}
+.drag-strip .brand .mark {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 17px;
+  font-weight: 400;
+  color: var(--text-1);
+  text-transform: none;
+  letter-spacing: -0.01em;
+}
+.drag-strip button,
+.drag-strip input {
+  -webkit-app-region: no-drag;
+}
+.drag-strip .icon-btn {
+  background: transparent;
+  border: 0;
+  padding: 6px 10px;
+  font-size: 12px;
+  font-family: var(--font-body);
+  color: var(--text-2);
+  cursor: pointer;
+  border-radius: var(--r-sm);
+  letter-spacing: var(--track-mid);
+}
+.drag-strip .icon-btn:hover {
+  background: var(--bg-hover);
+  color: var(--text-1);
+}
+
+/* Main horizontal layout. */
+.workbench {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+}
+
+/* Sidebar: warm tint with paper grain. Slight inner shadow on the right edge. */
+.sidebar {
+  width: 280px;
+  flex: 0 0 280px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0) 100%),
+    var(--bg-paper-tint);
+  border-right: 1px solid var(--line);
+  padding: 8px 22px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  overflow-y: auto;
+  position: relative;
+}
+.sidebar::after {
+  content: '';
+  position: absolute;
+  top: 0; bottom: 0; right: 0;
+  width: 1px;
+  background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.04) 50%, transparent 100%);
+  pointer-events: none;
+}
+
+/* Main: paper with faint vertical guides every 240px.
+   NO vertical scroll — entire window must fit in 820px viewport. */
+.main {
+  flex: 1;
+  background: var(--bg-page);
+  background-image:
+    radial-gradient(circle at 25% 35%, rgba(26, 24, 21, 0.025) 0px, transparent 1.5px),
+    radial-gradient(circle at 75% 65%, rgba(26, 24, 21, 0.025) 0px, transparent 1.5px),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0,
+      transparent 239px,
+      rgba(26, 24, 21, 0.025) 239px,
+      rgba(26, 24, 21, 0.025) 240px
+    );
+  background-size: 9px 9px, 11px 11px, auto;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  overflow: hidden;
+  position: relative;
+  padding: 12px 22px 16px;
+  gap: 12px;
+}
+
+/* Common: uppercase small label, like a darkroom equipment label */
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: var(--track-loose);
+  text-transform: uppercase;
+  color: var(--text-3);
+  font-weight: 500;
+  margin-bottom: 0;
+  padding: 6px 0;
+  min-height: 24px;
+  box-sizing: border-box;
+}
+.eyebrow::before {
+  content: '';
+  width: 12px;
+  height: 1px;
+  background: var(--text-3);
+  opacity: 0.6;
+}
+.eyebrow .num {
+  color: var(--text-2);
+}
+
+/* Sidebar section grouping */
+.sidebar-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--rule);
+  position: relative;
+}
+.sidebar-section:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+/* ---------- Main pane: top row = editor + templates ----------
+   Both columns share the row height (driven by the templates TOC).
+   The prompt editor and ce-stage stretch to fill the editor column,
+   so the prompt box's bottom edge lines up with the TOC's bottom edge. */
+.main-row-top {
+  display: grid;
+  grid-template-columns: 1fr 180px;
+  gap: 16px;
+  align-items: stretch;
+  flex: 0 0 auto;
+}
+
+.main-row-bottom {
+  display: grid;
+  grid-template-columns: 400px 400px;
+  gap: 16px;
+  align-items: stretch;
+  flex: 1 1 auto;
+  min-height: 0;
+  justify-content: start;
+}
+
+.editor-col {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  position: relative;
+}
+.templates-col {
+  border-left: 1px solid var(--rule);
+  padding-left: 14px;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+/* ---------- Print + Archive columns ----------
+   Both columns share identical structure: a header row + a 400×400 box.
+   To make the bottom edges line up to the pixel, the 400×400 box is the
+   LAST item in each column and is stretched to the bottom of the column
+   (the column itself stretches to fill the row via `align-items: stretch`
+   on .main-row-bottom above). The header sits at the top with its own
+   intrinsic height. */
+.print-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  flex: 0 0 auto;
+  align-self: stretch;
+}
+.archive-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  min-width: 0;
+  align-self: stretch;
+}
+.print-col .print,
+.archive-col .archive {
+  flex: 1 1 auto;
+  min-height: 0;
+}
+.print-col .print-frame,
+.archive-col .archive-list {
+  margin-top: auto;          /* push the box to the bottom of the column */
+  flex: 0 0 auto;
+}

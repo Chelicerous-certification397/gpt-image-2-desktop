@@ -1,0 +1,72 @@
+/* Design tokens. Light mode only. Studio Notebook aesthetic. */
+:root {
+  /* Surfaces — warm paper, not cool grey */
+  --bg-page: #F4F1EA;          /* warm off-white, like a sketchbook page */
+  --bg-card: #FBFAF6;          /* brighter, the "card" sits on the page */
+  --bg-input: #FDFCF8;
+  --bg-hover: #ECE6DA;
+  --bg-subtle: #EDE8DD;
+  --bg-paper-tint: #EFEAE0;    /* sidebar tint, slightly darker than page */
+
+  /* Text — ink, not neutral */
+  --text-1: #1A1815;           /* warm near-black */
+  --text-2: #5C564E;           /* secondary ink */
+  --text-3: #8A8275;           /* pencil */
+  --text-4: #B5AC9D;
+  --text-on-accent: #FBFAF6;
+
+  /* Lines */
+  --line: rgba(26, 24, 21, 0.10);
+  --line-strong: rgba(26, 24, 21, 0.18);
+  --rule: rgba(26, 24, 21, 0.06);
+
+  /* Accent — gallery blue, deeper than system */
+  --accent: #1F3FE0;
+  --accent-2: #0E27B8;
+  --accent-soft: rgba(31, 63, 224, 0.10);
+  --accent-glow: rgba(31, 63, 224, 0.35);
+
+  /* Status — aged pigments, not candy */
+  --danger: #B8242D;
+  --danger-soft: rgba(184, 36, 45, 0.08);
+  --warn: #B5732A;
+  --success: #2E7D43;
+
+  /* Type */
+  --font-display: "Fraunces", "New York", "Charter", Georgia, serif;
+  --font-body: -apple-system, BlinkMacSystemFont, "SF Pro Text", "PingFang SC", "Helvetica Neue", sans-serif;
+  --font-mono: "IBM Plex Mono", "SF Mono", Menlo, Consolas, monospace;
+  --font-system: var(--font-body);
+
+  --label-size: 11px;
+  --body-size: 13px;
+  --title-size: 16px;
+  --small-size: 11px;
+
+  /* Radii — sharper, more deliberate */
+  --r-xs: 2px;
+  --r-sm: 4px;
+  --r-md: 6px;
+  --r-lg: 10px;
+  --r-pill: 999px;
+
+  /* Shadows */
+  --shadow-card: 0 1px 0 rgba(26, 24, 21, 0.04), 0 6px 18px rgba(26, 24, 21, 0.05);
+  --shadow-pop: 0 12px 32px rgba(26, 24, 21, 0.18);
+  --shadow-btn: 0 1px 0 rgba(14, 39, 184, 0.4), 0 6px 16px rgba(31, 63, 224, 0.22);
+  --shadow-print: 0 1px 0 rgba(26, 24, 21, 0.05), 0 14px 40px rgba(26, 24, 21, 0.10);
+
+  /* Spacing */
+  --s-1: 4px;
+  --s-2: 8px;
+  --s-3: 12px;
+  --s-4: 16px;
+  --s-5: 20px;
+  --s-6: 24px;
+  --s-7: 32px;
+  --s-8: 48px;
+
+  /* Tracking */
+  --track-loose: 0.14em;
+  --track-mid: 0.06em;
+}

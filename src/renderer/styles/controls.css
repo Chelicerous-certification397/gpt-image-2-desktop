@@ -1,0 +1,614 @@
+/* Form controls. Studio Notebook aesthetic. */
+
+/* Field group: an eyebrow label + a content block. */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+}
+.field-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: var(--track-loose);
+  text-transform: uppercase;
+  color: var(--text-3);
+  font-weight: 500;
+}
+.field-value {
+  font-size: var(--body-size);
+  color: var(--text-1);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+}
+
+/* Text-like inputs. */
+select,
+input[type="text"],
+input[type="password"],
+input[type="number"] {
+  appearance: none;
+  -webkit-appearance: none;
+  font-family: var(--font-body);
+  font-size: var(--body-size);
+  color: var(--text-1);
+  background: var(--bg-input);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--r-sm);
+  padding: 8px 12px;
+  outline: none;
+  transition: border-color 140ms ease, box-shadow 140ms ease, background-color 140ms ease;
+}
+input:hover, select:hover {
+  border-color: var(--text-3);
+}
+select {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'><path d='M1 1l4 4 4-4' stroke='%231A1815' stroke-width='1.4' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 32px;
+}
+select:focus,
+input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+/* Segmented control — kept for Resolution (size + quality, side by side) */
+.segments {
+  display: inline-flex;
+  background: var(--bg-subtle);
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
+  padding: 2px;
+  gap: 1px;
+}
+.segments button {
+  appearance: none;
+  background: transparent;
+  border: 0;
+  padding: 6px 14px;
+  border-radius: 3px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: var(--text-2);
+  cursor: pointer;
+  transition: background-color 120ms ease, color 120ms ease, box-shadow 120ms ease;
+}
+.segments button:hover {
+  color: var(--text-1);
+}
+.segments button.is-active {
+  background: var(--text-1);
+  color: var(--bg-card);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
+}
+
+/* Dual segments wrapper: two .segments placed side by side on a single row.
+   Used by ResolutionSegments (size + quality). The thin divider keeps the
+   two groups readable when both are unselected. */
+.dual-segments {
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+  gap: 0;
+}
+.dual-segments .segments {
+  flex: 1 1 0;
+  min-width: 0;
+}
+.dual-segments .segments button {
+  flex: 1 1 0;
+  padding: 6px 0;
+  min-width: 0;
+}
+.dual-segments-divider {
+  width: 1px;
+  margin: 4px 4px;
+  background: var(--line);
+  flex: 0 0 auto;
+}
+
+/* Stepper */
+.stepper {
+  display: inline-flex;
+  align-items: center;
+  background: var(--bg-input);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--r-sm);
+  padding: 2px;
+}
+.stepper button {
+  appearance: none;
+  background: transparent;
+  border: 0;
+  width: 28px; height: 28px;
+  border-radius: 3px;
+  cursor: pointer;
+  color: var(--text-1);
+  font-size: 15px; line-height: 1;
+  font-family: var(--font-mono);
+  transition: background-color 120ms ease;
+}
+.stepper button:hover:not(:disabled) {
+  background: var(--bg-hover);
+}
+.stepper button:disabled {
+  color: var(--text-4);
+  cursor: not-allowed;
+}
+.stepper .value {
+  min-width: 28px;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-1);
+}
+
+/* Square chip selector (Aspect Ratio) */
+.chip-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4px;
+}
+.chip-grid button {
+  appearance: none;
+  background: var(--bg-input);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--r-sm);
+  padding: 8px 0;
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-2);
+  letter-spacing: 0.02em;
+  transition: all 120ms ease;
+  position: relative;
+}
+.chip-grid button:hover {
+  border-color: var(--text-1);
+  color: var(--text-1);
+}
+.chip-grid button.is-active {
+  background: var(--text-1);
+  border-color: var(--text-1);
+  color: var(--bg-card);
+}
+
+/* Pill (used for top-right icon buttons, history actions) */
+.pill {
+  appearance: none;
+  border: 1px solid var(--line-strong);
+  background: transparent;
+  color: var(--text-1);
+  padding: 5px 12px;
+  border-radius: var(--r-sm);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: var(--track-mid);
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 120ms ease, color 120ms ease, border-color 120ms ease;
+}
+.pill:hover {
+  background: var(--text-1);
+  color: var(--bg-card);
+  border-color: var(--text-1);
+}
+.pill.danger {
+  color: var(--danger);
+  border-color: rgba(184, 36, 45, 0.4);
+}
+.pill.danger:hover {
+  background: var(--danger);
+  color: var(--bg-card);
+  border-color: var(--danger);
+}
+
+/* Generate button — embedded into the prompt card (compact).
+   Full-width .generate-btn--solo variant still exists in case we
+   re-introduce a stand-alone button elsewhere. */
+.generate-btn {
+  appearance: none;
+  border: 0;
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: var(--track-loose);
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--text-on-accent);
+  background: var(--accent);
+  padding: 0 14px;
+  height: 32px;
+  border-radius: var(--r-sm);
+  box-shadow: var(--shadow-btn);
+  transition: transform 140ms ease, box-shadow 140ms ease, opacity 140ms ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  position: relative;
+  overflow: hidden;
+}
+.generate-btn::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.35) 50%, transparent 100%);
+}
+.generate-btn .glyph {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 16px;
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: 0;
+  line-height: 1;
+}
+.generate-btn:hover:not(:disabled) {
+  transform: translateY(-1px);
+  background: var(--accent-2);
+  box-shadow: 0 2px 0 rgba(14, 39, 184, 0.45), 0 12px 24px var(--accent-glow);
+}
+.generate-btn:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: var(--shadow-btn);
+}
+.generate-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none;
+  background: var(--text-3);
+  box-shadow: none;
+}
+
+/* ---------- contentEditable 提示词编辑器 ---------- */
+.ce-wrap {
+  position: relative;
+  display: block;
+}
+.ce-stage {
+  position: relative;
+  width: 100%;
+  /* Fixed height matches the templates TOC (5 items × ~57px ≈ 285px),
+     plus the 24px eyebrow + gaps so the prompt box's bottom edge lines up
+     with the TOC's bottom edge. ce-action floats on top — no flow space. */
+  height: 290px;
+  background: var(--bg-card);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--r-sm);
+  box-sizing: border-box;
+  overflow: hidden;
+  transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+.ce-stage:focus-within {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+.ce-action {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  pointer-events: auto;
+}
+.ce-editor {
+  outline: none;
+  font-family: var(--font-display);
+  font-size: 16px;
+  line-height: 1.55;
+  letter-spacing: 0.005em;
+  color: var(--text-1);
+}
+.ce-editor.empty::before {
+  content: attr(data-placeholder);
+  color: var(--text-3);
+  pointer-events: none;
+  position: absolute;
+  font-style: italic;
+}
+.ce-editor .mention {
+  display: inline-block;
+  color: var(--accent);
+  background: var(--accent-soft);
+  border: 1px solid rgba(31, 63, 224, 0.20);
+  border-radius: var(--r-xs);
+  padding: 1px 6px;
+  margin: 0 1px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  vertical-align: 1px;
+  user-select: all;
+  cursor: default;
+}
+
+/* Mention menu — gallery-style dropdown */
+.mention-menu {
+  position: fixed;
+  z-index: 50;
+  background: var(--bg-card);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--r-md);
+  box-shadow: var(--shadow-pop);
+  padding: 6px;
+  min-width: 240px;
+  max-height: 280px;
+  overflow: auto;
+}
+.mention-menu .menu-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: var(--track-loose);
+  text-transform: uppercase;
+  color: var(--text-3);
+  padding: 4px 8px 6px;
+  border-bottom: 1px solid var(--rule);
+  margin-bottom: 4px;
+}
+.mention-menu button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 6px 8px;
+  border-radius: var(--r-sm);
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  font-family: var(--font-body);
+  color: var(--text-1);
+  text-align: left;
+}
+.mention-menu button:hover {
+  background: var(--bg-hover);
+}
+.mention-menu button .num {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-2);
+  min-width: 22px;
+}
+.mention-menu button .name {
+  font-size: 12px;
+  color: var(--text-3);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex: 1;
+}
+
+/* ---------- Sidebar — Model display ---------- */
+.model-display {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.model-display .model-name {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 500;
+  font-style: italic;
+  color: var(--text-1);
+  letter-spacing: -0.01em;
+  line-height: 1;
+}
+.model-display .model-sub {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: var(--track-loose);
+  text-transform: uppercase;
+  color: var(--text-3);
+}
+
+/* ---------- Sidebar — Preset ---------- */
+.preset {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.preset-select {
+  width: 100%;
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-style: italic;
+}
+.preset-price {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  font-family: var(--font-mono);
+  color: var(--text-2);
+}
+.preset-price .amount {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 16px;
+  color: var(--accent);
+  font-weight: 500;
+}
+.preset-price .unit {
+  font-size: 10px;
+  letter-spacing: var(--track-loose);
+  text-transform: uppercase;
+}
+
+/* ---------- Sidebar — Reference Plates ---------- */
+.plates {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.plate-drop {
+  border: 1px dashed var(--line-strong);
+  border-radius: var(--r-sm);
+  padding: 18px 12px;
+  text-align: center;
+  background: transparent;
+  color: var(--text-2);
+  cursor: pointer;
+  transition: background-color 120ms ease, border-color 120ms ease;
+}
+.plate-drop:hover {
+  background: var(--bg-hover);
+  border-color: var(--text-1);
+  color: var(--text-1);
+}
+.plate-drop.is-drag {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.plate-drop-text {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: var(--track-loose);
+  text-transform: uppercase;
+}
+.plate-err {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--danger);
+  letter-spacing: 0.02em;
+}
+.plate-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 3px;
+}
+.plate {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  border-radius: var(--r-xs);
+  overflow: hidden;
+  background: var(--bg-card);
+  border: 1px solid var(--line-strong);
+  box-shadow: 0 1px 0 rgba(26, 24, 21, 0.04);
+  transition: transform 140ms ease, box-shadow 140ms ease;
+}
+.plate:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 1px 0 rgba(26, 24, 21, 0.05), 0 8px 16px rgba(26, 24, 21, 0.10);
+}
+.plate img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.plate-idx {
+  position: absolute;
+  top: 1px; left: 1px;
+  background: var(--text-1);
+  color: var(--bg-card);
+  font-family: var(--font-mono);
+  font-size: 8px;
+  letter-spacing: 0.04em;
+  padding: 0 3px;
+  border-radius: 1px;
+  line-height: 1.4;
+}
+.plate-rm {
+  position: absolute;
+  top: 1px; right: 1px;
+  width: 12px; height: 12px;
+  background: rgba(26, 24, 21, 0.75);
+  color: var(--bg-card);
+  border: 0;
+  border-radius: 1px;
+  font-size: 11px;
+  line-height: 11px;
+  padding: 0;
+  cursor: pointer;
+  font-family: var(--font-mono);
+  opacity: 0;
+  transition: opacity 120ms ease;
+}
+.plate:hover .plate-rm { opacity: 1; }
+.plate-rm:hover { background: var(--danger); }
+
+/* ---------- Main — Templates TOC (right column) ---------- */
+.toc {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-top: 2px;
+  border-top: 1px solid var(--rule);
+}
+.toc-item {
+  appearance: none;
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  gap: 8px;
+  align-items: baseline;
+  padding: 12px 0;
+  border: 0;
+  border-bottom: 1px solid var(--rule);
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+  font-family: var(--font-body);
+  color: var(--text-1);
+  transition: background-color 160ms ease, padding 160ms ease;
+  position: relative;
+}
+.toc-item::after {
+  content: '→';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-3);
+  font-size: 13px;
+  opacity: 0;
+  transition: opacity 160ms ease, transform 160ms ease;
+}
+.toc-item:hover {
+  padding-left: 4px;
+}
+.toc-item:hover::after {
+  opacity: 1;
+  transform: translate(2px, -50%);
+}
+.toc-item:hover .toc-label {
+  color: var(--accent);
+  font-style: italic;
+}
+.toc-num {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  color: var(--text-3);
+  padding-top: 1px;
+}
+.toc-text {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  min-width: 0;
+}
+.toc-label {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--text-1);
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+  transition: color 160ms ease;
+}
+.toc-en {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: var(--track-loose);
+  text-transform: uppercase;
+  color: var(--text-3);
+}

@@ -1,0 +1,340 @@
+/* Print / archive components. Studio Notebook aesthetic. */
+
+/* ---------- Print (PreviewBox) ---------- */
+.print {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.print-frame {
+  position: relative;
+  background: var(--bg-card);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--r-sm);
+  padding: 0;
+  box-shadow: var(--shadow-print);
+  cursor: zoom-in;
+  transition: box-shadow 220ms ease, transform 220ms ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.print-frame:hover {
+  box-shadow: 0 1px 0 rgba(26, 24, 21, 0.05), 0 22px 60px rgba(26, 24, 21, 0.14);
+  transform: translateY(-1px);
+}
+.print-frame .image-area {
+  position: relative;
+  background: var(--bg-card);
+  border-radius: 2px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.print-frame img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* ---------- Gallery (multi-image preview grid) ----------
+   The print-frame is a fixed 400×400 box. When more than one plate is
+   attached to the current previewEntry we lay them out as a grid that:
+     - preserves each plate's aspect ratio (object-fit: contain in a cell)
+     - pads the grid to a square (square layout keeps the frame's
+       optical center stable even for 1/2/3/4 plates)
+     - adapts column count to plate count so 1 plate fills the box while
+       5+ plates still read clearly without blowing past the frame edge.
+   The grid uses `minmax(0, 1fr)` so cells can shrink below their
+   natural size when many plates share the box. */
+.print-frame .gallery {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  gap: 6px;
+  padding: 6px;
+  box-sizing: border-box;
+  /* Auto-fit: 1 plate → 1 col, 2 plates → 2 cols, 3-4 plates → 2 cols,
+     5+ plates → 3 cols, capped so cells stay ≥ ~90px wide. */
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  grid-auto-rows: 1fr;
+}
+.print-frame .gallery-cell {
+  position: relative;
+  appearance: none;
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  background: var(--bg-page);
+  padding: 0;
+  margin: 0;
+  cursor: zoom-in;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 140ms ease, transform 140ms ease;
+}
+.print-frame .gallery-cell:hover {
+  border-color: var(--accent);
+  transform: translateY(-1px);
+}
+.print-frame .gallery-cell img {
+  /* contain keeps aspect ratio; the cell box itself is determined by
+     the surrounding grid track, so the plate is letterboxed inside
+     its cell when its native ratio doesn't match the cell's. */
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+.print-frame .gallery-idx {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  background: rgba(26, 24, 21, 0.78);
+  color: var(--bg-card);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.04em;
+  padding: 1px 4px;
+  border-radius: 1px;
+  line-height: 1.3;
+  pointer-events: none;
+}
+
+/* "PRINT No. 0001" caption beneath the frame */
+.print-caption {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: var(--track-loose);
+  text-transform: uppercase;
+  color: var(--text-3);
+  padding: 0 2px;
+}
+.print-caption .num {
+  color: var(--text-1);
+  font-weight: 500;
+}
+.print-caption .meta {
+  display: flex;
+  gap: 14px;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Pagination chip row (below the image, in the print frame padding) */
+.pager {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 5px;
+  background: rgba(26, 24, 21, 0.72);
+  padding: 5px 8px;
+  border-radius: var(--r-pill);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+.pager .dot {
+  width: 6px; height: 6px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.4);
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+.pager .dot.is-active {
+  background: #fff;
+}
+
+/* Save button — bottom-right corner of the print frame.
+   Same visual language as the pager: dark glass pill, mono caps, blurred backdrop. */
+.print-save {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  appearance: none;
+  border: 0;
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: var(--track-loose);
+  text-transform: uppercase;
+  color: #fff;
+  background: rgba(26, 24, 21, 0.72);
+  padding: 5px 12px;
+  border-radius: var(--r-pill);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: background-color 140ms ease, transform 140ms ease;
+}
+.print-save:hover {
+  background: var(--text-1);
+  transform: translateY(-1px);
+}
+.print-save:active {
+  transform: translateY(0);
+}
+
+.print-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+/* Index badge on the print */
+.print-index {
+  position: absolute;
+  top: -10px;
+  left: 12px;
+  background: var(--bg-page);
+  padding: 0 8px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: var(--track-loose);
+  text-transform: uppercase;
+  color: var(--text-2);
+}
+.print-index strong {
+  color: var(--text-1);
+  font-weight: 500;
+}
+
+/* ---------- Archive (HistoryPanel) ---------- */
+.archive {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.archive-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 4px;
+  min-height: 24px;
+  box-sizing: border-box;
+}
+.archive-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: var(--track-loose);
+  text-transform: uppercase;
+  color: var(--text-2);
+}
+.archive-eyebrow::before {
+  content: '';
+  width: 16px; height: 1px;
+  background: var(--text-3);
+}
+.archive-eyebrow .count {
+  color: var(--text-3);
+  font-weight: 500;
+}
+.archive-list {
+  background: var(--bg-card);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--r-sm);
+  overflow: auto;
+  box-shadow: 0 1px 0 rgba(26, 24, 21, 0.04);
+}
+.archive-item {
+  display: grid;
+  grid-template-columns: 64px 100px 1fr;
+  gap: 16px;
+  align-items: start;
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--rule);
+  cursor: pointer;
+  transition: background-color 120ms ease;
+}
+.archive-item:last-child { border-bottom: 0; }
+.archive-item:hover {
+  background: var(--bg-hover);
+}
+.archive-item .idx {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: var(--track-loose);
+  color: var(--text-3);
+  text-transform: uppercase;
+  padding-top: 2px;
+}
+.archive-item .idx .n {
+  color: var(--text-1);
+  font-size: 12px;
+  font-weight: 500;
+}
+.archive-item .ts {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-2);
+  letter-spacing: 0.02em;
+  padding-top: 3px;
+  line-height: 1.4;
+}
+.archive-item .ts .preset {
+  display: block;
+  color: var(--text-3);
+  font-size: 9px;
+  letter-spacing: var(--track-loose);
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+.archive-item .body {
+  min-width: 0;
+}
+.archive-item .prompt {
+  font-family: var(--font-display);
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--text-1);
+  font-style: italic;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-word;
+}
+.archive-item .params {
+  margin-top: 4px;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: var(--track-loose);
+  text-transform: uppercase;
+  color: var(--text-3);
+}
+
+/* Banners / errors */
+.banner {
+  margin: 0;
+  padding: 10px 14px;
+  border-radius: var(--r-sm);
+  font-size: 12px;
+  background: var(--danger-soft);
+  color: var(--danger);
+  border-left: 2px solid var(--danger);
+}
+.banner pre {
+  margin: 6px 0 0;
+  padding: 8px 10px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  white-space: pre-wrap;
+  max-height: 160px;
+  overflow: auto;
+  background: rgba(184, 36, 45, 0.05);
+  border-radius: 3px;
+  color: var(--text-2);
+}
